@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Touchless Security System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- BOOT SCREEN -->
+    <div id="bootScreen" style="display:none;">
+        <div id="bootText">
+            Initializing...
+        </div>
+    </div>
+
+
+    <!-- ACCESS GRANTED FLASH -->
+    <div id="grantOverlay" style="display:none;">
+        ACCESS GRANTED
+    </div>
+
+
+    <!-- TOP TELEMETRY TICKER -->
+    <div class="tickerBar">
+
+        <div class="tickerText">
+            Threat Scan Active • Secure Channel Connected • Sensor Nodes Online • Adaptive Monitoring Running
+        </div>
+
+    </div>
+
+
+    <!-- AUTH SCREEN -->
+    <div id="authScreen">
+
+        <div class="authPanel">
+
+            <h1>Adaptive Threat Control Console</h1>
+
+            <h2>Gesture Authentication Required</h2>
+
+            <p>
+                Perform Password:
+                ✊ → ✋ → ✌️
+            </p>
+
+            <div class="authDetectLabel">
+                Detected Gesture
+            </div>
+
+            <div id="authGesture">
+                Waiting...
+            </div>
+
+            <div id="authBox">
+                LOCKED
+            </div>
+
+            <div class="cameraPanel">
+
+                <div class="crosshair"></div>
+
+                <div class="targetLock">
+                    TARGET TRACKING ACTIVE
+                </div>
+
+                <div id="webcam-container"></div>
+
+            </div>
+
+            <button id="startBtn" onclick="init()">
+                Start Authentication
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MAIN DASHBOARD -->
+    <div id="mainDashboard" style="display:none;">
+
+        <div class="topbar">
+
+            <div class="brand">
+                Adaptive Threat Control Console
+            </div>
+
+            <div id="alertBanner">
+                System Secure
+            </div>
+
+        </div>
+
+
+        <!-- MISSION STATUS STRIP -->
+        <div class="tickerBar">
+
+            <div class="tickerText">
+                Command Network Stable • AI Threat Engine Active • Monitoring Loop Running
+            </div>
+
+        </div>
+
+
+        <div class="mainLayout">
+
+
+            <!-- LEFT -->
+            <div class="sidebar">
+
+                <div class="panel">
+                    <h3>Threat Radar</h3>
+
+                    <div class="radarRing"></div>
+
+                    <div id="threatBox">
+                        0%
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+                    <h3>Security Level</h3>
+
+                    <div id="securityBox">
+                        GREEN
+                    </div>
+                </div>
+
+
+                <div class="panel">
+                    <h3>Mode</h3>
+
+                    <div id="modeBox">
+                        NORMAL
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!-- CENTER -->
+            <div class="centerPanel">
+
+                <div class="cameraPanel">
+
+                    <div class="crosshair"></div>
+
+                    <div class="targetLock">
+                        TARGET TRACKING ACTIVE
+                    </div>
+
+                    <div id="webcam-container2"></div>
+
+                </div>
+
+
+                <div class="commandRow">
+
+                    <div class="panel">
+
+                        <h3>Detected Gesture</h3>
+
+                        <h2 id="gesture">
+                            Waiting...
+                        </h2>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>Command Engine</h3>
+
+                        <div id="commandBox">
+                            Command: None
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT -->
+            <div class="sidebar">
+
+                <div class="panel">
+
+                    <h3>System Status</h3>
+
+                    <div id="statusBox">
+                        Monitoring Active
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3>Telemetry</h3>
+
+                    <div id="telemetryBox">
+                        CPU: 42%<br>
+                        Nodes: 12<br>
+                        Integrity: 95%
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3>Controls</h3>
+
+                    <button onclick="resetSystem()">
+                        Reset Threat
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3>System Logs</h3>
+
+                    <div id="logBox">
+                        No Events
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
