@@ -64,13 +64,10 @@ if(boot){
 boot.style.display="none";
 }
 
-model=
-await tmImage.load(
-"model/model.json",
-"model/metadata.json"
-);
+try{
 
-webcam=
+/* camera first */
+webcam =
 new tmImage.Webcam(
 400,
 400,
@@ -81,6 +78,31 @@ await webcam.setup();
 
 await webcam.play();
 
+document.getElementById(
+"webcam-container"
+).appendChild(
+webcam.canvas
+);
+
+/* model after camera */
+model =
+await tmImage.load(
+"model/model.json",
+"model/metadata.json"
+);
+
+window.requestAnimationFrame(loop);
+
+}
+catch(e){
+
+console.error(e);
+
+alert(
+"Camera or model failed"
+);
+
+}
 document.getElementById(
 "webcam-container"
 ).appendChild(
